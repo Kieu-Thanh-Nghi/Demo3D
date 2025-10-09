@@ -2,35 +2,43 @@ using UnityEngine;
 
 public class InputManager
 {
-    internal MoveByKey MoveInput = new();
-    internal RotateByMouse RotateInput = new();
+    internal ControlInputs controlInputs = new ControlInputs(new ComputerInputs());
+    internal Iinputs inputs => controlInputs.inputs;
+    internal void LockCursor(bool isLock)
+    {
+        if (isLock)
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+        }
+        else
+        {
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+        }
+    }
 }
 
-public static class InputID
+public class ControlInputs
 {
-    public static string Horizontal = "Horizontal";
-    public static string Vertical = "Vertical";
-    public static string AxisMouseX = "Mouse X";
-    public static string AxisMouseY = "Mouse Y";
-}
-public class MoveByKey
-{
-    internal Vector3 GetDirection(Transform charTransform)
+    internal Iinputs inputs;
+    public ControlInputs(Iinputs theInputs)
     {
-        float hInput = Input.GetAxis(InputID.Horizontal);
-        float vInput = Input.GetAxis(InputID.Vertical);
+        inputs = theInputs;
+    }
+    internal Vector3 GetMoveDirection(Transform charTransform)
+    {
+        float hInput = inputs.GetMoveAxisHorizontal();
+        float vInput = inputs.GetMoveAxisVertical();
         return (charTransform.right * hInput + charTransform.forward * vInput).normalized;
     }
-}
 
-public class RotateByMouse
-{
-    internal float GetLeftRightAngle(float anglePerSecond)
+    internal Vector3 GetRotateAngle_Horizontal(float anglePerSecond)
     {
-        return Input.GetAxis(InputID.AxisMouseX) * anglePerSecond * Time.deltaTime;
+        return new Vector3(0, inputs.GetRotateAxisHorizontal() * anglePerSecond * Time.deltaTime, 0);
     }
-    internal float GetUpDownAngle(float anglePerSecond)
+    internal Vector3 GetRotateAngle_Vertical(float anglePerSecond)
     {
-        return Input.GetAxis(InputID.AxisMouseY) * anglePerSecond * Time.deltaTime;
+        return new Vector3(-inputs.GetRotateAxisVertical() * anglePerSecond * Time.deltaTime, 0, 0);
     }
 }
