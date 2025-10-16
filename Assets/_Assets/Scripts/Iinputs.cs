@@ -5,7 +5,7 @@ public interface Iinputs
     float GetMoveAxisVertical();
     float GetRotateAxisHorizontal();
     float GetRotateAxisVertical();
-    bool isShootingBullet();
+    bool isShootingBullet(bool isAutomatic);
     bool isReloadAmmo();
 }
 
@@ -18,7 +18,17 @@ public class ComputerInputs : Iinputs
 
     public bool isReloadAmmo() => Input.GetKeyDown(KeyCode.R);
 
-    public bool isShootingBullet() => Input.GetMouseButtonDown(InputID.LeftMouseButton);
+    public bool isShootingBullet(bool isAutomatic)
+    {
+        if (isAutomatic)
+        {
+            return Input.GetMouseButton(InputID.LeftMouseButton);
+        }
+        else
+        {
+            return Input.GetMouseButtonDown(InputID.LeftMouseButton);
+        }
+    }
 }
 
 public static class InputID

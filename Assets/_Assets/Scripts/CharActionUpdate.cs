@@ -53,7 +53,7 @@ public class CharActionUpdate : MonoBehaviour
 
     void firingBullet()
     {
-        if (inputsManager.inputs.isShootingBullet())
+        if (inputsManager.inputs.isShootingBullet(theGun.isAutomaticShooting))
         {
             theGun.Launch();
         }

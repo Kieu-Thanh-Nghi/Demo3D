@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class GunAmmo : MonoBehaviour
 {
@@ -9,6 +10,7 @@ public class GunAmmo : MonoBehaviour
     [SerializeField] Animator anim;
     [SerializeField] AudioSource reloadSound;
     [SerializeField] int _loadedAmmo;
+    [SerializeField] UnityEvent DoWhenLoadAmmo;
 
     private void Start()
     {
@@ -20,6 +22,7 @@ public class GunAmmo : MonoBehaviour
         set
         {
             _loadedAmmo = value;
+            DoWhenLoadAmmo?.Invoke();
             if (_loadedAmmo <= 0) ReLoad();
             else UnLockShooting();
         }
