@@ -13,6 +13,7 @@ public class BulletRayCast : MonoBehaviour
     }
     public void PerformRayCasting()
     {
+        Debug.Log("ss");
         Ray aimingRay = new Ray(aimingCamera.transform.position, aimingCamera.transform.forward);
         if(Physics.Raycast(aimingRay, out RaycastHit hitInfo, 1000f, layerMask))
         {

@@ -28,8 +28,8 @@ public class GunAmmo : MonoBehaviour
         }
     }
     public void ShootOneBullet() => LoadedAmmo--;
-    void LockShooting() => theGun.enabled = false;
-    void UnLockShooting() => theGun.enabled = true;
+    void LockShooting() => theGun.isLocked = true;
+    void UnLockShooting() => theGun.isLocked = false;
     public void Refill() => LoadedAmmo = magSize;
     internal void ReLoad()
     {

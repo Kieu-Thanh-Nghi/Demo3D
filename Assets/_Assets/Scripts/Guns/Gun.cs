@@ -12,6 +12,7 @@ public class Gun : MonoBehaviour
     [SerializeField] internal bool isAutomaticShooting;
     [SerializeField] protected UnityEvent OnShoot;
     [SerializeField] protected UnityEvent DoWhenGunIdle;
+    [SerializeField] internal bool isLocked;
 
     internal virtual void SetUpPlayer(CharActionUpdate thePlayer)
     {
@@ -20,6 +21,7 @@ public class Gun : MonoBehaviour
 
     internal virtual void Launch()
     {
+        if (isLocked) return;
         anim.SetTrigger(AnimID.Shoot);
     }
 
