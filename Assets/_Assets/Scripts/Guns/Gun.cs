@@ -5,12 +5,18 @@ using UnityEngine.Events;
 
 public class Gun : MonoBehaviour
 {
-    [SerializeField] protected Transform firingPos;
+    [SerializeField] internal CharActionUpdate Player;
     [SerializeField] protected AudioSource shootingSound;
     [SerializeField] protected Animator anim;
     [SerializeField] internal GunAmmo ammo;
     [SerializeField] internal bool isAutomaticShooting;
     [SerializeField] protected UnityEvent OnShoot;
+    [SerializeField] protected UnityEvent DoWhenGunIdle;
+
+    internal virtual void SetUpPlayer(CharActionUpdate thePlayer)
+    {
+        Player = thePlayer;
+    }
 
     internal virtual void Launch()
     {
@@ -20,9 +26,5 @@ public class Gun : MonoBehaviour
     public virtual void PlayFireSound() => shootingSound.Play();
     
     public virtual void Shooting() => OnShoot?.Invoke();
-    public virtual void Reload()
-    {
-        if (ammo.LoadedAmmo <= 0) return;
-        firingPos.gameObject.SetActive(true);
-    }
+    public virtual void BackToIdle() => DoWhenGunIdle?.Invoke();
 }

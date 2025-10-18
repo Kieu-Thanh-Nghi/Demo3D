@@ -25,15 +25,3 @@ public class AutomaticGun : Gun
         UpdateFiring();
     }
 }
-
-public class BulletRayCast : MonoBehaviour
-{
-    [SerializeField] GameObject hitMarkerPrefab;
-    [SerializeField] Camera aimingCamera;
-    [SerializeField] LayerMask layerMask;
-
-    public void PerformRayCasting()
-    {
-
-    }
-}

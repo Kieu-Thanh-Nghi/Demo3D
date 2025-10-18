@@ -7,6 +7,7 @@ public class CharActionUpdate : MonoBehaviour
 {
     [SerializeField] CharacterController charCtrler;
     [SerializeField] Transform cameraHolder;
+    [SerializeField] internal Camera Cam;
     [SerializeField] internal CharacterData CharData;
     [SerializeField] internal ConfigData configData;
     [SerializeField] bool isPause = false;
