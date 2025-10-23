@@ -29,6 +29,11 @@ public class ComputerInputs : Iinputs
             return Input.GetMouseButtonDown(InputID.LeftMouseButton);
         }
     }
+
+    public bool isSwitchingGun(int i)
+    {
+        return (Input.GetKeyDown(KeyCode.Alpha1 + i) || Input.GetKeyDown(KeyCode.Keypad1 + i));
+    }
 }
 
 public static class InputID

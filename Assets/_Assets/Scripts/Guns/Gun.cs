@@ -28,5 +28,8 @@ public class Gun : MonoBehaviour
     public virtual void PlayFireSound() => shootingSound.Play();
     
     public virtual void Shooting() => OnShoot?.Invoke();
-    public virtual void BackToIdle() => DoWhenGunIdle?.Invoke();
+    public virtual void BackToIdle() {
+        Debug.Log("ss");
+        DoWhenGunIdle?.Invoke();
+    }
 }
