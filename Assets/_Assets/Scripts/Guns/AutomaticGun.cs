@@ -13,7 +13,6 @@ public class AutomaticGun : Gun
 
     void UpdateFiring()
     {
-        Debug.Log(Time.time - lastShot >= interval);
         if (Time.time - lastShot >= interval)
         {
             anim.Play(AnimID.Shoot, layer: -1, normalizedTime: 0);

@@ -5,7 +5,7 @@ using UnityEngine.Events;
 
 public class Gun : MonoBehaviour
 {
-    [SerializeField] internal CharActionUpdate Player;
+    internal Character character;
     [SerializeField] protected AudioSource shootingSound;
     [SerializeField] protected Animator anim;
     [SerializeField] internal GunAmmo ammo;
@@ -14,22 +14,23 @@ public class Gun : MonoBehaviour
     [SerializeField] protected UnityEvent DoWhenGunIdle;
     [SerializeField] internal bool isLocked;
 
-    internal virtual void SetUpPlayer(CharActionUpdate thePlayer)
-    {
-        Player = thePlayer;
-    }
-
     internal virtual void Launch()
     {
         if (isLocked) return;
         anim.SetTrigger(AnimID.Shoot);
+    }
+    internal virtual void firingBullet(Character character)
+    {
+        if (character.inputs.isShootingBullet(isAutomaticShooting))
+        {
+            Launch();
+        }
     }
 
     public virtual void PlayFireSound() => shootingSound.Play();
     
     public virtual void Shooting() => OnShoot?.Invoke();
     public virtual void BackToIdle() {
-        Debug.Log("ss");
         DoWhenGunIdle?.Invoke();
     }
 }

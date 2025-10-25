@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Missile : MonoBehaviour
+public class Missile : CausingDamage
 {
     [SerializeField] internal GameObject ExplosionPrefab;
     [SerializeField] internal float lifeTime = 20, explosionRadius, explosionForce;
@@ -26,6 +26,7 @@ public class Missile : MonoBehaviour
             {
                 rigidbody.AddExplosionForce(explosionForce, transform.position, explosionRadius, 1, ForceMode.Impulse);
             }
+            DeliverDamage(blowedObject);
         }
     }
 }

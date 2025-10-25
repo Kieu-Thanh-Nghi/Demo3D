@@ -38,4 +38,11 @@ public class GunAmmo : MonoBehaviour
     }
 
     public void PlayReloadSound() => reloadSound.Play();
+    internal void GunReload(Character character)
+    {
+        if (character.inputs.isReloadAmmo())
+        {
+            ReLoad();
+        }
+    }
 }

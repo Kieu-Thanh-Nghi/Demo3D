@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
+using UnityEngine.Events;
 
-public class BulletRayCast : MonoBehaviour
+public class BulletRayCast : CausingDamage
 {
     [SerializeField] GameObject hitMarkerPrefab;
     [SerializeField] Gun theGun;
@@ -9,16 +10,16 @@ public class BulletRayCast : MonoBehaviour
 
     private void Start()
     {
-        aimingCamera = theGun.Player.Cam;
+        aimingCamera = theGun.character.Cam;
     }
     public void PerformRayCasting()
     {
-        Debug.Log("ss");
         Ray aimingRay = new Ray(aimingCamera.transform.position, aimingCamera.transform.forward);
         if(Physics.Raycast(aimingRay, out RaycastHit hitInfo, 1000f, layerMask))
         {
             Quaternion effectRotation = Quaternion.LookRotation(hitInfo.normal);
             Instantiate(hitMarkerPrefab, hitInfo.point, effectRotation);
+            DeliverDamage(hitInfo.collider);
         }
     }
 }

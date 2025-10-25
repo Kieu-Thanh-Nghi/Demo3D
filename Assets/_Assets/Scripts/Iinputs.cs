@@ -7,6 +7,7 @@ public interface Iinputs
     float GetRotateAxisVertical();
     bool isShootingBullet(bool isAutomatic);
     bool isReloadAmmo();
+    bool isSwitchingGun(int i);
 }
 
 public class ComputerInputs : Iinputs
@@ -49,4 +50,9 @@ public static class AnimID
 {
     public static string Shoot = "Shoot";
     public static string Reload = "Reload";
+    public static string DieTrigger = "Die";
+}
+public static class TagID
+{
+    public static string Enemy = "Enemy";
 }
