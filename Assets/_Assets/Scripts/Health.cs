@@ -12,7 +12,7 @@ public class Health : MonoBehaviour
 
     private void OnValidate()
     {
-        anim = GetComponent<Animator>();
+        anim = GetComponentInChildren<Animator>();
     }
 
     private void Start()
