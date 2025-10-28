@@ -9,6 +9,10 @@ public class RagdollSwitcher : MonoBehaviour
     void RetrieveRigidbodies()
     {
         rigids = GetComponentsInChildren<Rigidbody>();
+        for (int i = 0; i < rigids.Length; i++)
+        {
+            rigids[i].gameObject.tag = TagID.Enemy;
+        }
     }
 
     [ContextMenu("Clear Ragdoll")]
