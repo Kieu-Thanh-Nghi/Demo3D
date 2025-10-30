@@ -19,14 +19,17 @@ public class Missile : CausingDamage
     void BlowObjects()
     {
         Collider[] affectedObjects = Physics.OverlapSphere(transform.position, explosionRadius);
-        foreach(var blowedObject in affectedObjects)
+        int i;
+        int n = affectedObjects.Length;
+        for(i = 0; i < n - 1; i++)
         {
-            Rigidbody rigidbody = blowedObject.attachedRigidbody;
+            Rigidbody rigidbody = affectedObjects[i].attachedRigidbody;
             if (rigidbody)
             {
                 rigidbody.AddExplosionForce(explosionForce, transform.position, explosionRadius, 1, ForceMode.Impulse);
             }
-            DeliverDamage(blowedObject);
+            DeliverDamage(affectedObjects[i]);
         }
+        DeliverDamage(affectedObjects[n - 1], isDone: true);
     }
 }

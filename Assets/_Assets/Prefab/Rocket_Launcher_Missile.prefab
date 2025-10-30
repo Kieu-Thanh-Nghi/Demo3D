@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 6229219313211524567}
   - component: {fileID: 4197521103251623936}
   - component: {fileID: 740319533}
+  - component: {fileID: 238629337561278012}
   m_Layer: 0
   m_Name: Rocket_Launcher_Missile
   m_TagString: Untagged
@@ -129,11 +130,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3a2afec31e058d4b9f6e671a12c72c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 20
+  damageTypes:
+  - {fileID: 238629337561278012}
   ExplosionPrefab: {fileID: 1764654978243476, guid: a98b15aa948478849b54661e4d9a317e, type: 3}
   lifeTime: 20
   explosionRadius: 4
   explosionForce: 20
+--- !u!114 &238629337561278012
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 399125541688525516}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd000c35fd2f13047b35a803142c61ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 20
 --- !u!1001 &1405329450
 PrefabInstance:
   m_ObjectHideFlags: 0
