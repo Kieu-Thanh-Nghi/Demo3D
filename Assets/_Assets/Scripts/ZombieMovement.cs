@@ -20,17 +20,17 @@ public class ZombieMovement : MonoBehaviour
         //case chasing player
         if (distance > reachingRadius)
         {
-            agent.isStopped = true;
+            agent.isStopped = false;
             agent.SetDestination(playerFoot.position);
-            anim.SetBool("isWalking", false);
+            anim.SetBool("isWalking", true);
         }
         
 
         //case destination reached
         else
         {
-            agent.isStopped = false;
-            anim.SetBool("isWalking", true);
+            agent.isStopped = true;
+            anim.SetBool("isWalking", false);
         }
 
 
