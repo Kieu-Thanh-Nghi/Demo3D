@@ -1,19 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Health : MonoBehaviour
 {
     [SerializeField] int maxHealthPoint;
-    [SerializeField] Animator anim;
+    [SerializeField] UnityEvent onDie;
 
-    int healthPoint;
+    [SerializeField] int healthPoint;
     bool IsDead => healthPoint <= 0;
-
-    private void OnValidate()
-    {
-        anim = GetComponentInChildren<Animator>();
-    }
 
     private void Start()
     {
@@ -28,5 +24,5 @@ public class Health : MonoBehaviour
         if (IsDead) Die();
     }
 
-    void Die() => anim.SetTrigger(AnimID.DieTrigger);
+    void Die() => onDie.Invoke();
 }
