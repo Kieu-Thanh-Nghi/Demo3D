@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.Events;
 
 public class ZombieMovement : MonoBehaviour
 {
@@ -9,6 +10,7 @@ public class ZombieMovement : MonoBehaviour
     [SerializeField] Animator anim;
     [SerializeField] NavMeshAgent agent;
     [SerializeField] float reachingRadius;
+    [SerializeField] UnityEvent OnDestinationReached, OnStartMoving;
 
     // Update is called once per frame
     void Update()
@@ -23,6 +25,7 @@ public class ZombieMovement : MonoBehaviour
             agent.isStopped = false;
             agent.SetDestination(playerFoot.position);
             anim.SetBool("isWalking", true);
+            OnStartMoving.Invoke();
         }
         
 
@@ -31,8 +34,7 @@ public class ZombieMovement : MonoBehaviour
         {
             agent.isStopped = true;
             anim.SetBool("isWalking", false);
+            OnDestinationReached.Invoke();
         }
-
-
     }
 }

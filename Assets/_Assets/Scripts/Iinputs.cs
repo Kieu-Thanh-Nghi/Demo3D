@@ -51,6 +51,7 @@ public static class AnimID
     public static string Shoot = "Shoot";
     public static string Reload = "Reload";
     public static string DieTrigger = "Die";
+    internal static string AttackBool = "isAttacking";
 }
 public static class TagID
 {
