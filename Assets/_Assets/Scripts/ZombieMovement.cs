@@ -37,4 +37,10 @@ public class ZombieMovement : MonoBehaviour
             OnDestinationReached.Invoke();
         }
     }
+
+    private void OnDisable()
+    {
+        agent.isStopped = true;
+        anim.SetBool("isWalking", false);
+    }
 }
