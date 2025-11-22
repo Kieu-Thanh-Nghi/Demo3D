@@ -12,6 +12,10 @@ public class ZombieMovement : MonoBehaviour
     [SerializeField] float reachingRadius;
     [SerializeField] UnityEvent OnDestinationReached, OnStartMoving;
 
+    private void Start()
+    {
+        playerFoot = Player.Instance.PlayerFoot;
+    }
     // Update is called once per frame
     void Update()
     {

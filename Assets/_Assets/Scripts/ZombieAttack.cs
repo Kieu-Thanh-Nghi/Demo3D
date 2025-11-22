@@ -8,6 +8,11 @@ public class ZombieAttack : MonoBehaviour
     [SerializeField] int damage;
     [SerializeField] Health playerHealth;
 
+    private void Start()
+    {
+        playerHealth = Player.Instance.GetComponent<Health>();
+    }
+
     public void StartAttack() => anim.SetBool(AnimID.AttackBool, true);
     public void StopAttack() => anim.SetBool(AnimID.AttackBool, false);
     public void OnAttack(int index)
