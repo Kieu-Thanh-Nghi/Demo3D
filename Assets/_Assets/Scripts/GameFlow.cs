@@ -2,13 +2,22 @@
 
 public class GameFlow : MonoBehaviour
 {
+    [SerializeField] GameObject WinUI, LostUI;
     public void OnPlayerDie()
     {
-        Debug.Log("PlayerDead");
+        StopGame();
+        LostUI.SetActive(true);
+    }
+    public void OnMissionCompleted()
+    {
+        StopGame();
+        WinUI.SetActive(true);
     }
 
-    public void OnZombieDie(Animator anim)
+    void StopGame()
     {
-        anim.SetTrigger(AnimID.DieTrigger);
+        Time.timeScale = 0;
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
     }
 }

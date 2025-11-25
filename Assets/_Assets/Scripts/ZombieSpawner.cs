@@ -20,7 +20,6 @@ public class ZombieSpawner : MonoBehaviour
     }
     public void StartSpawn()
     {
-        Player.Instance.SetZombieQuantity(spawnQuantity);
         StartCoroutine(SpawnZombieByTime());
     }
 

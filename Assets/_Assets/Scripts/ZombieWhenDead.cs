@@ -4,6 +4,6 @@ public class ZombieWhenDead : MonoBehaviour
 {
     public void Minus1ZomQuatity()
     {
-        Player.Instance.SetZombieQuantity(-1);
+        Player.Instance.missionManager.OnZombieKilled(gameObject);
     }
 }
