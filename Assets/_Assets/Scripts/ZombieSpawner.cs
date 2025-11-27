@@ -13,11 +13,15 @@ public class ZombieSpawner : MonoBehaviour
         Gizmos.color = Color.red;
         Gizmos.DrawSphere(transform.position, 0.2f);
     }
+
+#if UNITY_EDITOR
     private void OnDrawGizmosSelected()
     {
         Handles.color = new Color(1, 0, 0, 0.1f);
         Handles.DrawSolidDisc(transform.position, transform.up, radius);
     }
+#endif
+
     public void StartSpawn()
     {
         StartCoroutine(SpawnZombieByTime());

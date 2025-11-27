@@ -7,9 +7,10 @@ public class MissionManager : MonoBehaviour
     [SerializeField] GameFlow gameFlow;
     [SerializeField] int requiredKill;
     [SerializeField] TMP_Text missionText;
-    [SerializeField] Transform exitDoor, playerFoot;
+    [SerializeField] Gate gate;
 
     [SerializeField] int currentKill;
+    [SerializeField] bool isPlayerExit;
     private void Start()
     {
         StartCoroutine(VerifyMission());
@@ -33,14 +34,13 @@ public class MissionManager : MonoBehaviour
     IEnumerator VerifyPlayerExit()
     {
         missionText.text = $"Find exit door";
-        yield return new WaitUntil(IsPlayerExit);
+        gate.OnPlayerEnter.AddListener(OnPlayerExit);
+        yield return new WaitUntil(() => isPlayerExit);
+        gate.OnPlayerEnter.RemoveListener(OnPlayerExit);
     }
 
-    bool IsPlayerExit()
-    {
-        float distance = Vector3.Distance(playerFoot.position, exitDoor.position);
-        return distance < 1;
-    }
+    void OnPlayerExit() => isPlayerExit = true;
+
 
     public void OnZombieKilled(GameObject zombie) => currentKill++;
 }
