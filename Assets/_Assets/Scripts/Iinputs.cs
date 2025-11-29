@@ -9,6 +9,33 @@ public interface Iinputs
     bool isReloadAmmo();
     bool isSwitchingGun(int i);
 }
+public class PhoneInputs : Iinputs
+{
+    PhoneInputsUIContaner UIContaner;
+
+    public PhoneInputs(PhoneInputsUIContaner UIContaner)
+    {
+        this.UIContaner = UIContaner;
+    }
+    public float GetMoveAxisHorizontal() => UIContaner.joystick.Horizontal;
+
+    public float GetMoveAxisVertical() => UIContaner.joystick.Vertical;
+
+    public float GetRotateAxisHorizontal() => UIContaner.rotate.currentYaw;
+
+    public float GetRotateAxisVertical() => UIContaner.rotate.currentPitch;
+    public bool isReloadAmmo()
+    {
+        Debug.Log(UIContaner.isReload);
+        return UIContaner.isReload;
+    }
+    public bool isShootingBullet(bool isAutomatic) => UIContaner.isShoot;
+
+    public bool isSwitchingGun(int i)
+    {
+        return UIContaner.GetGunIndex() == i;
+    }
+}
 
 public class ComputerInputs : Iinputs
 {

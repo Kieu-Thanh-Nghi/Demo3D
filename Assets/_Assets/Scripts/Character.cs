@@ -11,7 +11,13 @@ public class Character : MonoBehaviour
     [SerializeField] internal CharacterData CharData;
     [SerializeField] internal ConfigData configData;
     [SerializeField] internal bool isPause = false;
-    internal Iinputs inputs = new ComputerInputs();
+    [SerializeField] PhoneInputsUIContaner UIContaner;
+    internal Iinputs inputs;
+
+    private void Start()
+    {
+        inputs = new PhoneInputs(UIContaner);
+    }
 
     // Update is called once per frame
     void Update()
