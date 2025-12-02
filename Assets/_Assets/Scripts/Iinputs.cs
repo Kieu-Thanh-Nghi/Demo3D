@@ -26,14 +26,44 @@ public class PhoneInputs : Iinputs
     public float GetRotateAxisVertical() => UIContaner.rotate.currentPitch;
     public bool isReloadAmmo()
     {
-        Debug.Log(UIContaner.isReload);
-        return UIContaner.isReload;
+        if (UIContaner.isReload)
+        {
+            UIContaner.isReload = false;
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
-    public bool isShootingBullet(bool isAutomatic) => UIContaner.isShoot;
+    public bool isShootingBullet(bool isAutomatic)
+    {
+        if (UIContaner.isShoot)
+        {
+            if (!isAutomatic)
+            {
+                UIContaner.isShoot = false;
+            }
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
 
     public bool isSwitchingGun(int i)
     {
-        return UIContaner.GetGunIndex() == i;
+        if (UIContaner.gunIndex < 0)
+        {
+            return false;
+        }
+        else
+        {
+            if (UIContaner.gunIndex == i)
+            UIContaner.gunIndex = -1;
+            return true;
+        }
     }
 }
 

@@ -6,16 +6,18 @@ public class PhoneInputsUIContaner : MonoBehaviour
     [SerializeField] internal Joystick joystick;
     [SerializeField] internal RotateByDrag rotate;
     [SerializeField] internal bool isReload, isShoot;
-    [SerializeField] int gunIndex;
+    [SerializeField] internal int gunIndex;
 
     public void SetGunIndex(int i)
     {
         gunIndex = i;
     }
-    internal int GetGunIndex()
+    internal void ResetGunIndex(bool isStop)
     {
-        int temp = gunIndex;
-        return temp;
+        if (gunIndex != -1 && isStop)
+        {
+            gunIndex = -1;
+        }
     }
 
     public void SetIsReload(bool val) => isReload = val;
