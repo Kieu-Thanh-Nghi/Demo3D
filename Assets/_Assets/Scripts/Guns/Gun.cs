@@ -7,7 +7,7 @@ public class Gun : MonoBehaviour
 {
     internal Character character;
     [SerializeField] protected AudioSource shootingSound;
-    [SerializeField] protected Animator anim;
+    [SerializeField] internal Animator anim;
     [SerializeField] internal GunAmmo ammo;
     [SerializeField] internal bool isAutomaticShooting;
     [SerializeField] protected UnityEvent OnShoot;

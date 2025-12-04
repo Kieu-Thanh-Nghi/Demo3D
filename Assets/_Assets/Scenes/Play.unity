@@ -478,6 +478,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   joystick: {fileID: 1916328646}
   rotate: {fileID: 781944848}
+  gunManager: {fileID: 1508688849}
   isReload: 0
   isShoot: 0
   gunIndex: 0

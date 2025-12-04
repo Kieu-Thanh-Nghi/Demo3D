@@ -18,6 +18,10 @@ public class GunManager : CharacterUpdate
         }
     }
 
+    internal Gun GetCurrentGun()
+    {
+        return guns[usingGunIndex];
+    }
     public override void DoWhenUpdate(Character character)
     {
         guns[usingGunIndex].firingBullet(character);
